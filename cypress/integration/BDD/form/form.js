@@ -6,7 +6,7 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 beforeEach( function(){ 
     cy.fixture('example').then(function(data)
     {
-        this.data =data
+        this.data = data
     })
 });
 

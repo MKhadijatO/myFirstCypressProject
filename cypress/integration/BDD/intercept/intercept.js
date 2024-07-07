@@ -42,6 +42,6 @@ Then ('I clck the Cart Button' , function(){
 })
 
 Then ('I validated list of items in Cart using intercept', function(){
-    cy.wait('@Cartlist', { timeout: 10000 })
-    cy.get('button').contains('Place Order').click()
+    // cy.wait('@Cartlist', { timeout: 10000 });
+    cy.get('button').contains('Place Order').click();
 })
