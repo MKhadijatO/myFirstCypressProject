@@ -1,31 +1,23 @@
-name: Cypress tests​
+name: Cypress tests
 
-on: [push]​
+on: [push]
 
-jobs:​
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
 
-  cypress-run:​
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    runs-on: ubuntu-latest​
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.15.0'
 
-    steps:​
+      - name: Install project dependencies
+        run: npm install
 
-    - name: Checkout repository​
-
-      uses: actions/checkout@v2​
-
-    - name: Set up Node.js​
-
-      uses: actions/setup-node@v2​
-
-      with:​
-
-        node-version: '20.15.0'​
-
-    - name: Install project dependencies​
-
-      run: npm install​
-​
-- name: Run Cypress tests run:​
-
- npx cypress run​
+      - name: Run Cypress tests
+        run: npx cypress run
+        
