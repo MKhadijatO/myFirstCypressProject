@@ -10,6 +10,8 @@ return config;
 }
 
 module.exports = defineConfig({
+  projectId: "hcd7wb",
+  // projectId: 'qigh5j',
     // "defaultCommandTimeout": 10000,
 e2e: {
 setupNodeEvents,
