@@ -45,15 +45,6 @@ When ('I validate successful login to my account', function(){
     // cy.contains('Welcome khadijat').should('be.visible')
 })  
 
-
-
-// Then ('unsuccessful login message -Please fill out Username and Password.-', function(){
-//     cy.on('window:alert', (str) =>
-// {
-//     expect(str).to.equal('Please fill out Username and Password.')
-
-
-
 Then ('I enter an invalid username', function (){
     cy.get('#loginusername').type(this.data.iusername);
 })
@@ -70,7 +61,7 @@ Then ('I validate unsuccessful login to my account - Wrong password', function()
 
 Then ('I validate unsuccessful login to my account - User does not exist', function(){
     // cy.on('window:alert', (str) => {
-    //     expect(str).to.equal('Please fill out Username and Password.')
+    //     expect(str).to.equal('User does not exist.')
     // })
     cy.on('window:alert', (t) => {
         expect(t).to.contains('User does not exist.')
