@@ -5,11 +5,10 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
     strategy:
       matrix:
-        browser: [firefox, chrome, edge]
-        
+        browser: [chrome, firefox, edge]
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -59,4 +58,4 @@ jobs:
           npx cypress run --browser chrome --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
         elif [ "${{ matrix.browser }}" == "edge" ]; then
           npx cypress run --browser edge --config-file=cypress.config.js --record true --key ${{ secrets.CYPRESS_RECORD_KEY }}
-          fi
+        fi
