@@ -5,10 +5,11 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     strategy:
       matrix:
-        browser: [chrome, firefox, edge]
-
+        browser: [firefox, chrome, edge]
+        
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
