@@ -21,26 +21,31 @@ When ('I click The Login button', function(){
 })
 
 Then ('I enter a valid username', function(){
-    cy.wait(2000);
+
+    cy.wait(2000); //take 2 secs before running password script
     cy.get('#loginusername').type(this.data.username);
 })
 
 When ('I enter a valid password', function(){
-    cy.wait(2000);
+    cy.wait(2000); //take 2 secs before running password script
     cy.get('#loginpassword').type(this.data.password);
 })
 
 Then ('I Click Login button', function(){
-    //also works
+    cy.get("button[onclick='logIn()']").click() 
+
+
+    // the following syntax can be used
     // cy.get('#logInModal > div > div > div.modal-footer > button.btn.btn-primary').click();
     // cy.get('button').contains('Log in').click();
-    cy.get("button[onclick='logIn()']").click() 
+    
 })
 
 When ('I validate successful login to my account', function(){ 
-    // cy.wait(3000)
-    // cy.get('#nameofuser').should('exist');
     cy.get('#nameofuser').should('contains.text', 'Welcome ' + this.data.username);
+
+    // the following syntax can be used to assert success
+    // cy.get('#nameofuser').should('exist');
     // cy.contains('Welcome khadijat').should('exist')
     // cy.contains('Welcome khadijat').should('be.visible')
 })  
@@ -50,33 +55,40 @@ Then ('I enter an invalid username', function (){
 })
 
 Then ('I validate unsuccessful login to my account - Wrong password', function(){
-    // cy.on('window:alert', (str) => {
-    //     expect(str).to.equal('Please fill out Username and Password.')
-    // })
+
     cy.on('window:alert', (t) => {
         expect(t).to.contains('Wrong password.')
     })
 
+    //can be used interchangably as above
+    // cy.on('window:alert', (str) => {
+    //     expect(str).to.equal('Please fill out Username and Password.')
+    // })
+    
 })
 
 Then ('I validate unsuccessful login to my account - User does not exist', function(){
-    // cy.on('window:alert', (str) => {
-    //     expect(str).to.equal('User does not exist.')
-    // })
     cy.on('window:alert', (t) => {
         expect(t).to.contains('User does not exist.')
     })
 
+    //can be used interchangably as above
+    // cy.on('window:alert', (str) => {
+    //     expect(str).to.equal('User does not exist.')
+    // })
+
 })
      
 Then ('I validate unsuccessful login to my account - Please fill out Username and Password', function(){
-    // cy.on('window:alert', (str) => {
-    //     expect(str).to.equal('Please fill out Username and Password.')
-    // })
     cy.on('window:alert', (t) => {
         expect(t).to.contains('Please fill out Username and Password.')
     })
-
+    
+    //can be used interchangably as above
+    // cy.on('window:alert', (str) => {
+    //     expect(str).to.equal('Please fill out Username and Password.')
+    // })
+    
 })
 
 Then ('I enter an invalid password', function(){

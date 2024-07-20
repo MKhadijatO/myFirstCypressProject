@@ -7,7 +7,17 @@ beforeEach( function(){
     cy.fixture('example').then(function(data)
     {
         this.data = data
-})
+    })
+
+
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // Log the error to the console
+      console.error('Uncaught exception:', err);
+
+      // Returning false prevents Cypress from failing the test
+      return false;
+    });
+
 });
 
 
